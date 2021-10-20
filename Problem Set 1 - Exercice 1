@@ -121,3 +121,10 @@ describe
 * We assumed that PHD degrees take 8 years (slowest is 6 years and longest is 10)
 * We assumed that 5+ years are 5 years 
 * We assumed that "Some college but no degree" means one year of college
+
+gen exper = age - educ + 5
+gen exper2 = (exper)^2
+
+// Question 3
+reg lnhwage educ exper exper2, r
+
