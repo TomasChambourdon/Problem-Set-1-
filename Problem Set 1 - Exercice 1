@@ -1,3 +1,5 @@
+clear
+
 #open data 
 use cps_18.dta
 describe
