@@ -1,8 +1,10 @@
-clear
+// ECON 121 PSET 1: Anthony, Thomas, Hazel, Monica
 
-// open data 
+clear 
 
-use cps_18.dta
+//open data 
+use "/Users/anthonyortiz/Downloads/cps_18.dta"
+
 describe
 
 // Question2
@@ -31,97 +33,30 @@ describe
  
  generate yearsofschooling = -1 
  
- if educ == 0 ｜｜ educ == 1 ｜｜ educ == 2 
- 	replace yearsofschooling = 0 
-
+ replace yearsofschooling = 0 if educ == 0 | educ == 1 | educ == 2
+ replace yearsofschooling = 2.5 if educ == 10 
+ replace yearsofschooling = 1 if educ == 11 
+ replace yearsofschooling = 2 if educ == 12 
+ replace yearsofschooling = 3 if educ == 13 
+ replace yearsofschooling = 4 if educ == 14
+ replace yearsofschooling = 5.5 if educ == 20
+ replace yearsofschooling = 5 if educ == 21
+ replace yearsofschooling = 6 if educ == 22
+ replace yearsofschooling = 7.5 if educ == 30 
+ replace yearsofschooling = 7 if educ == 31  
+ replace yearsofschooling = 8 if educ == 32 
+ replace yearsofschooling = 9 if educ == 40 
+ replace yearsofschooling = 10 if educ == 50 
+ replace yearsofschooling = 11 if educ == 60 
+ replace yearsofschooling = 12 if educ == 70 | educ == 71 | educ == 72 | educ == 73 
+ replace yearsofschooling = 13 if educ == 80 | educ == 81 
+ replace yearsofschooling = 14 if educ == 90 | educ == 91 | educ == 92
+ replace yearsofschooling = 15 if educ == 100 
+ replace yearsofschooling = 16 if educ == 110 | educ == 111  
+ replace yearsofschooling = 17 if educ == 120 | educ == 121
+ replace yearsofschooling = 18 if educ == 122 | educ == 123 | educ == 124 
+ replace yearsofschooling = 20 if educ == 125 
  
- else if educ == 10 {
- 	replace yearsofschooling = 2.5
- }
- 
- else if educ == 11 {
- 	replace yearsofschooling = 1
- }
- 
- else if educ == 12 {
- 	replace yearsofschooling = 2
- }
- 
- else if educ == 13 {
- 	replace yearsofschooling = 3
- }
- 
- else if educ == 14 {
- 	replace yearsofschooling = 4
- }
- 
- else if educ == 20 {
- 	replace yearsofschooling = 5.5
- }
- 
- else if educ == 21 {
- 	replace yearsofschooling = 5
- }
- 
- else if educ == 22 {
- 	replace yearsofschooling = 6
- }
- 
- else if educ == 30 {
- 	replace yearsofschooling = 7.5
- }
- 
- else if educ == 31 {
- 	replace yearsofschooling = 7
- }
- 
- else if educ == 32 {
- 	replace yearsofschooling = 8
- }
- 
- else if educ == 40 {
- 	replace yearsofschooling = 9
- }
- 
- else if educ == 50 {
- 	replace yearsofschooling = 10
- }
- 
- else if educ == 60 {
- 	replace yearsofschooling = 11
- }
- 
- else if educ == 70 ｜｜ educ == 71 ｜｜ educ == 72 ｜｜ educ == 73 {
- 	replace yearsofschooling = 12
- }
- 
- else if educ == 80 ｜｜ educ == 81 {
- 	replace yearsofschooling = 13
- }
- 
- else if educ == 90 ｜｜ educ == 91 ｜｜ educ == 92 {
- 	replace yearsofschooling = 14
- }
- 
- else if educ == 100 {
- 	replace yearsofschooling = 15
- }
- 
- else if educ == 110 ｜｜ educ == 111 {
- 	replace yearsofschooling = 16
- }
- 
- else if educ == 120 ｜｜ educ == 121 {
- 	replace yearsofschooling = 17
- }
- 
- else if educ == 122 ｜｜ educ == 123 ｜｜ educ == 124 {
- 	replace yearsofschooling = 18
- }
- 
- else if educ == 125 {
- 	replace yearsofschooling = 20
- }
  
 * We assumed that PHD degrees take 8 years (slowest is 6 years and longest is 10)
 * We assumed that 5+ years are 5 years 
@@ -134,5 +69,3 @@ summarize
 
 // Question 3
 reg lnhwage yearsofschooling exper exper2, r
-
- 
