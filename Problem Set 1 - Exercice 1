@@ -1,0 +1,123 @@
+#open data 
+use cps_18.dta
+describe
+
+#Question2
+ drop if wkswork1 < 50
+ drop if uhrsworkt < 35
+ drop if incwage == 0
+ 
+ describe
+ 
+ gen lnhwage = ln(incwage/uhrsworkt*52)
+ label variable lnhwage "log hourly wage"
+ 
+ describe
+ 
+ generate white = 0 
+ replace white = 1 if race == "White"
+ 
+ generate black = 0 
+ replace black = 1 if race == "Black/Negro"
+ 
+ generate other = 0
+ replace other = 1 if (race != "White") && (race != "Black/Negro")
+ 
+ describe
+ 
+ generate yearsofschooling 
+ if educ == 0 ｜｜ educ == 1 ｜｜ educ == 2 {
+ 	replace yearsofschooling = 0
+ }
+ 
+ elif educ == 10 {
+ 	replace yearsofschooling = 2.5
+ }
+ 
+ elif educ == 11 {
+ 	replace yearsofschooling = 1
+ }
+ 
+ elif educ == 12 {
+ 	replace yearsofschooling = 2
+ }
+ 
+ elif educ == 13 {
+ 	replace yearsofschooling = 3
+ }
+ 
+ elif educ == 14 {
+ 	replace yearsofschooling = 4
+ }
+ 
+ elif educ == 20 {
+ 	replace yearsofschooling = 5.5
+ }
+ 
+ elif educ == 21 {
+ 	replace yearsofschooling = 5
+ }
+ 
+ elif educ == 22 {
+ 	replace yearsofschooling = 6
+ }
+ 
+ elif educ == 30 {
+ 	replace yearsofschooling = 7.5
+ }
+ 
+ elif educ == 31 {
+ 	replace yearsofschooling = 7
+ }
+ 
+ elif educ == 32 {
+ 	replace yearsofschooling = 8
+ }
+ 
+ elif educ == 40 {
+ 	replace yearsofschooling = 9
+ }
+ 
+ elif educ == 50 {
+ 	replace yearsofschooling = 10
+ }
+ 
+ elif educ == 60 {
+ 	replace yearsofschooling = 11
+ }
+ 
+ elif educ == 70｜｜ educ == 71 ｜｜ educ == 72 ｜｜ educ == 73 {
+ 	replace yearsofschooling = 12
+ }
+ 
+ elif educ == 80 ｜｜ educ == 81 {
+ 	replace yearsofschooling = 13
+ }
+ 
+ elif educ == 90 ｜｜ educ == 91 ｜｜ educ == 92 {
+ 	replace yearsofschooling = 14
+ }
+ 
+ elif educ == 100 {
+ 	replace yearsofschooling = 15
+ }
+ 
+ elif educ == 110 ｜｜ educ == 111 {
+ 	replace yearsofschooling = 16
+ }
+ 
+ elif educ == 120 ｜｜ educ == 121 {
+ 	replace yearsofschooling = 17
+ }
+ 
+ elif educ == 122｜｜ educ == 123 ｜｜ educ == 124 {
+ 	replace yearsofschooling = 18
+ }
+ 
+ elif educ == 125 {
+ 	replace yearsofschooling = 20
+ }
+ 
+* We assumed that PHD degrees take 8 years (slowest is 6 years and longest is 10)
+* We assumed that 5+ years are 5 years 
+* We assumed that "Some college but no degree" means one year of college
