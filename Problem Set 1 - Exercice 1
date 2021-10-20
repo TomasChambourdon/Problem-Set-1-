@@ -31,95 +31,95 @@ describe
  
  generate yearsofschooling = -1 
  
- if educ == 0 ｜｜ educ == 1 ｜｜ educ == 2 {
- 	replace yearsofschooling = 0
- }
+ if educ == 0 ｜｜ educ == 1 ｜｜ educ == 2 
+ 	replace yearsofschooling = 0 
+
  
- elif educ == 10 {
+ else if educ == 10 {
  	replace yearsofschooling = 2.5
  }
  
- elif educ == 11 {
+ else if educ == 11 {
  	replace yearsofschooling = 1
  }
  
- elif educ == 12 {
+ else if educ == 12 {
  	replace yearsofschooling = 2
  }
  
- elif educ == 13 {
+ else if educ == 13 {
  	replace yearsofschooling = 3
  }
  
- elif educ == 14 {
+ else if educ == 14 {
  	replace yearsofschooling = 4
  }
  
- elif educ == 20 {
+ else if educ == 20 {
  	replace yearsofschooling = 5.5
  }
  
- elif educ == 21 {
+ else if educ == 21 {
  	replace yearsofschooling = 5
  }
  
- elif educ == 22 {
+ else if educ == 22 {
  	replace yearsofschooling = 6
  }
  
- elif educ == 30 {
+ else if educ == 30 {
  	replace yearsofschooling = 7.5
  }
  
- elif educ == 31 {
+ else if educ == 31 {
  	replace yearsofschooling = 7
  }
  
- elif educ == 32 {
+ else if educ == 32 {
  	replace yearsofschooling = 8
  }
  
- elif educ == 40 {
+ else if educ == 40 {
  	replace yearsofschooling = 9
  }
  
- elif educ == 50 {
+ else if educ == 50 {
  	replace yearsofschooling = 10
  }
  
- elif educ == 60 {
+ else if educ == 60 {
  	replace yearsofschooling = 11
  }
  
- elif educ == 70｜｜ educ == 71 ｜｜ educ == 72 ｜｜ educ == 73 {
+ else if educ == 70 ｜｜ educ == 71 ｜｜ educ == 72 ｜｜ educ == 73 {
  	replace yearsofschooling = 12
  }
  
- elif educ == 80 ｜｜ educ == 81 {
+ else if educ == 80 ｜｜ educ == 81 {
  	replace yearsofschooling = 13
  }
  
- elif educ == 90 ｜｜ educ == 91 ｜｜ educ == 92 {
+ else if educ == 90 ｜｜ educ == 91 ｜｜ educ == 92 {
  	replace yearsofschooling = 14
  }
  
- elif educ == 100 {
+ else if educ == 100 {
  	replace yearsofschooling = 15
  }
  
- elif educ == 110 ｜｜ educ == 111 {
+ else if educ == 110 ｜｜ educ == 111 {
  	replace yearsofschooling = 16
  }
  
- elif educ == 120 ｜｜ educ == 121 {
+ else if educ == 120 ｜｜ educ == 121 {
  	replace yearsofschooling = 17
  }
  
- elif educ == 122｜｜ educ == 123 ｜｜ educ == 124 {
+ else if educ == 122 ｜｜ educ == 123 ｜｜ educ == 124 {
  	replace yearsofschooling = 18
  }
  
- elif educ == 125 {
+ else if educ == 125 {
  	replace yearsofschooling = 20
  }
  
@@ -134,3 +134,5 @@ summarize
 
 // Question 3
 reg lnhwage yearsofschooling exper exper2, r
+
+ 
