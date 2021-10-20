@@ -122,7 +122,7 @@ describe
 * We assumed that 5+ years are 5 years 
 * We assumed that "Some college but no degree" means one year of college
 
-gen exper = age - educ + 5
+gen exper = age - educ - 5
 gen exper2 = (exper)^2
 
 // Question 3
