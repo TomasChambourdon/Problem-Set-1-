@@ -1,10 +1,12 @@
 clear
 
-#open data 
+// open data 
+
 use cps_18.dta
 describe
 
-#Question2
+// Question2
+
  drop if wkswork1 < 50
  drop if uhrsworkt < 35
  drop if incwage == 0
@@ -17,17 +19,18 @@ describe
  describe
  
  generate white = 0 
- replace white = 1 if race == "White"
+ replace white = 1 if race == 100
  
  generate black = 0 
- replace black = 1 if race == "Black/Negro"
+ replace black = 1 if race == 200
  
  generate other = 0
- replace other = 1 if (race != "White") && (race != "Black/Negro")
+ replace other = 1 if race != 100 & race != 200
  
  describe
  
- generate yearsofschooling 
+ generate yearsofschooling = -1 
+ 
  if educ == 0 ｜｜ educ == 1 ｜｜ educ == 2 {
  	replace yearsofschooling = 0
  }
@@ -123,10 +126,11 @@ describe
 * We assumed that PHD degrees take 8 years (slowest is 6 years and longest is 10)
 * We assumed that 5+ years are 5 years 
 * We assumed that "Some college but no degree" means one year of college
-
+ 
 gen exper = age - yearsofschooling - 5
 gen exper2 = (exper)^2
 
+summarize
+
 // Question 3
 reg lnhwage yearsofschooling exper exper2, r
-
