@@ -22,8 +22,8 @@ label var lnhwage "log hourly wage"
 generate hrpwk = hours07/50
 label var hrpwk "hours per week"
 
-generate hrpwk = hours07/50
-label var hrpwk "hours per week"
+generate ptlexp = ((age79+28)-educ-5)
+label var ptlexp "potential experience"
 
 drop if hrpwk < 35 
 drop if hrpwk ==.
