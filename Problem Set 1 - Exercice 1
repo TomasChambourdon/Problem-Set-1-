@@ -12,6 +12,8 @@ describe
  drop if wkswork1 < 50
  drop if uhrsworkt < 35
  drop if incwage == 0
+ drop if uhrsworkt == 997
+ drop if uhrsworkt == 999
  
  gen lnhwage = ln(incwage/uhrsworkt*52)
  label variable lnhwage "log hourly wage"
