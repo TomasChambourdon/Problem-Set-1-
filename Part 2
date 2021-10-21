@@ -22,6 +22,9 @@ label var lnhwage "log hourly wage"
 generate hrpwk = hours07/50
 label var hrpwk "hours per week"
 
+generate hrpwk = hours07/50
+label var hrpwk "hours per week"
+
 drop if hrpwk < 35 
 drop if hrpwk ==.
 
