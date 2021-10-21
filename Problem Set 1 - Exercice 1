@@ -77,6 +77,12 @@ lincom race - sex
 reg lnhwage yearsofschooling exper exper2 1.sex race, r
 reg lnhwage yearsofschooling exper exper2 2.sex race, r
 
+//male 1, female is 2
+
+display ((0.2806268 + 0.2806268)/sqrt((0.0100096^2/53739)+(0.0100096^2/53739)))
+
+**lincom 1.sex-0.sex
+
 // Question 7
 generate yearsofschoolingXsex = yearsofschooling * sex
 generate experXsex = exper * sex
@@ -88,3 +94,9 @@ reg lnhwage yearsofschooling exper exper2 sex race yearsofschoolingXsex experXse
 //Delta Method
 reg lnhwage yearsofschooling exper exper2 sex race yearsofschoolingXsex experXsex exper2Xsex raceXsex, r
 nlcom _b[sex] / (_b[sex] + _b[yearsofschoolingXsex])
+
+// Bootsrap
+
+bootstrap, reps(99): reg lnhwage yearsofschooling exper exper2 race sex yearsofschoolingXsex experXsex exper2Xsex raceXsex
+ 
+bootstrap ratio=(_b[yearsofschooling]/(_b[yearsofschooling]+_b[yearsofschoolingXsex])),reps(99): reg lnhwage yearsofschooling exper exper2 race sex yearsofschoolingXsex experXsex exper2Xsex raceXsex
