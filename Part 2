@@ -1,0 +1,29 @@
+//Question 8
+
+clear 
+
+*open data
+use "/Users/monica/Desktop/Applied Econometrics and Data/data - econ 121/nlsy79.dta"
+
+*without sample weights 
+summarize black 
+summarize hisp
+
+*with sample weights
+summarize black [weight=perweight]
+summarize hisp [weight=perweight]
+
+* there is a bias variance tradeoff
+
+// Question 9
+generate lnhwage = ln(laborinc07/hours07)
+label var lnhwage "log hourly wage"
+
+generate hrpwk = hours07/50
+label var hrpwk "hours per week"
+
+drop if hrpwk < 35 
+drop if hrpwk ==.
+
+reg lnhwage black hisp male, r
+reg lnhwage black hisp male [pweight=perweight], r
