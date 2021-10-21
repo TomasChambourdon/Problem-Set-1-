@@ -15,7 +15,7 @@ describe
  drop if uhrsworkt == 997
  drop if uhrsworkt == 999
  
- gen lnhwage = ln(incwage/uhrsworkt*52)
+ gen lnhwage = ln(incwage/(uhrsworkt*wkswork1))
  label variable lnhwage "log hourly wage"
  
  describe
@@ -81,7 +81,7 @@ reg lnhwage yearsofschooling exper exper2 2.sex race, r
 
 //male 1, female is 2
 
-display ((0.2806268 + 0.2806268)/sqrt((0.0100096^2/53739)+(0.0100096^2/53739)))
+**display ((0.2806268 + 0.2806268)/sqrt((0.0100096^2/53739)+(0.0100096^2/53739)))
 
 **lincom 1.sex-0.sex
 
