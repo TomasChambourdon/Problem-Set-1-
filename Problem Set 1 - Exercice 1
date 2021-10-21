@@ -13,8 +13,6 @@ describe
  drop if uhrsworkt < 35
  drop if incwage == 0
  
- describe
- 
  gen lnhwage = ln(incwage/uhrsworkt*52)
  label variable lnhwage "log hourly wage"
  
@@ -29,7 +27,6 @@ describe
  generate other = 0
  replace other = 1 if race != 100 & race != 200
  
- describe
  
  generate yearsofschooling = -1 
  
@@ -69,3 +66,25 @@ summarize
 
 // Question 3
 reg lnhwage yearsofschooling exper exper2, r
+
+// Question 4
+reg lnhwage yearsofschooling exper exper2 sex race, r
+ 
+// Question 5
+lincom race - sex
+
+// Question 6
+reg lnhwage yearsofschooling exper exper2 1.sex race, r
+reg lnhwage yearsofschooling exper exper2 2.sex race, r
+
+// Question 7
+generate yearsofschoolingXsex = yearsofschooling * sex
+generate experXsex = exper * sex
+generate exper2Xsex = exper2 * sex
+generate raceXsex = race * sex
+
+reg lnhwage yearsofschooling exper exper2 sex race yearsofschoolingXsex experXsex exper2Xsex raceXsex, r
+
+//Delta Method
+reg lnhwage yearsofschooling exper exper2 sex race yearsofschoolingXsex experXsex exper2Xsex raceXsex, r
+nlcom _b[sex] / (_b[sex] + _b[yearsofschoolingXsex])
